@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microservice2
+  namespace: dev-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: microservice2
+  template:
+    metadata:
+      labels:
+        app: microservice2
+    spec:
+      containers:
+      - name: microservice2
+        image: prasannakumar520/my-node-app:1.0.0-26
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: microservice2
+  namespace: dev-backend
+spec:
+  selector:
+    app: microservice2
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
