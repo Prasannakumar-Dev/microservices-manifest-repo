@@ -5,35 +5,23 @@ metadata:
   namespace: dev-backend
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.class: nginx
 spec:
   rules:
   - host: dev-heal.infoviz.co
     http:
       paths:
-      - path: /
+      - path: /microservice1
         pathType: Prefix
         backend:
           service:
             name: microservice1
             port:
               number: 80
-# ---
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-# metadata:
-#   name: dev-ingress
-#   namespace: dev-frontend
-#   annotations:
-#     nginx.ingress.kubernetes.io/rewrite-target: /
-# spec:
-#   rules:
-#   - host: dev.app.infoviz.co
-#     http:
-#       paths:
-#       - path: /
-#         pathType: Prefix
-#         backend:
-#           service:
-#             name: microfrontend1
-#             port:
-#               number: 80
+      - path: /microservice2
+        pathType: Prefix
+        backend:
+          service:
+            name: microservice2
+            port:
+              number: 80

@@ -25,6 +25,7 @@ metadata:
   name: microservice2
   namespace: dev-backend
 spec:
+  type: NodePort
   selector:
     app: microservice2
   ports:
