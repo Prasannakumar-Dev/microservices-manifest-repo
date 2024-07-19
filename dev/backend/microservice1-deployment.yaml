@@ -25,9 +25,13 @@ metadata:
   name: microservice1
   namespace: dev-backend
 spec:
+  type: NodePort
   selector:
     app: microservice1
   ports:
   - protocol: TCP
     port: 80
     targetPort: 3000
+    # You can specify a nodePort number between 30000-32767 if needed
+    # nodePort: 30001
+
